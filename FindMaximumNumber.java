@@ -2,26 +2,36 @@ package com.generics;
 
 import java.util.ArrayList;
 import java.util.Collections;
+public class FindMaximumNumber<E extends Comparable> {
 
-public class FindMaximumNumber {
+	  private E a, b, c;
+
+	  public FindMaximumNumber(E a, E b, E c) {
+	    this.a = a;
+	    this.b = b;
+	    this.c = c;
+
+	    this.testMaximum(); 
+	  }
+	  public E testMaximum() {
+	    E max = FindMaximumNumber.testMaximum(a, b, c);
+	    System.out.println("max is " + max);
+	    return max;
+	  }
 
 	  public static void main(String[] args) {
+	   
+	    FindMaximumNumber<Integer> intIns = new FindMaximumNumber<>(10, 2, 3); 
 
-		  FindMaximumNumber maxNum = new FindMaximumNumber();
+	    new FindMaximumNumber<Float>(10f, 20f, 3f);
 
-	    //Test case 1:
-	    System.out.println(" Test case 1 max number= " + maxNum.findMax(10, 2, 3));
+	    new FindMaximumNumber<String>("Chase", "Patric", "Ryan");
 
-	    //Test case 1: 
-	    System.out.println(" Test case 2 max number=  " + maxNum.findMax(10, 20, 3));
-
-	    //Test case 1: 
-	    System.out.println(" Test case 3 max number=  " + maxNum.findMax(10, 20, 30));
 	  }
- 
-	  public int findMax(Integer a, Integer b, Integer c) {
-	    Integer max = Integer.MIN_VALUE;
 
+	  @SuppressWarnings({"unchecked", "rawtypes"})
+	  public static <E extends Comparable> E testMaximum(E a, E b, E c) {
+	    E max; 
 	    if (a.compareTo(b) > 0) {
 	      if (a.compareTo(c) > 0) max = a;
 	      else max = c;
@@ -31,4 +41,5 @@ public class FindMaximumNumber {
 
 	    return max;
 	  }
+
 	}
